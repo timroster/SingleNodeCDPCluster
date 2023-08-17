@@ -101,6 +101,7 @@ wget https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-5.1.
 tar zxf ~/mysql-connector-java-5.1.49.tar.gz -C ~
 mkdir -p /usr/share/java/
 cp ~/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar /usr/share/java/mysql-connector-java.jar
+chmod 644 /usr/share/java/mysql-connector-java.jar
 rm -rf ~/mysql-connector-java-5.1.49*
 
 echo "-- Create DBs required by CM"
