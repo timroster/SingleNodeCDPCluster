@@ -102,6 +102,7 @@ wget https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-5.1.
 tar zxf ~/mysql-connector-java-5.1.49.tar.gz -C ~
 mkdir -p /usr/share/java/
 cp ~/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar /usr/share/java/mysql-connector-java.jar
+chmod 644 /usr/share/java/mysql-connector-java.jar
 rm -rf ~/mysql-connector-java-5.1.49*
 
 echo "-- Create DBs required by CM"
@@ -115,7 +116,7 @@ echo "-- Prepare CM database 'scm'"
 
 
 ## PostgreSQL see: https://www.postgresql.org/download/linux/redhat/
-yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+yum install -y --nogpgcheck https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 
 #yum install -y postgresql
 sudo yum install -y postgresql11-server
@@ -164,6 +165,7 @@ echo "-- Enable passwordless root login via rsa key"
 ssh-keygen -f ~/myRSAkey -t rsa -N ""
 mkdir ~/.ssh
 cat ~/myRSAkey.pub >> ~/.ssh/authorized_keys
+cp ~/myRSAkey ~/.ssh
 chmod 400 ~/.ssh/authorized_keys
 ssh-keyscan -H `hostname` >> ~/.ssh/known_hosts
 sed -i 's/.*PermitRootLogin.*/PermitRootLogin without-password/' /etc/ssh/sshd_config
