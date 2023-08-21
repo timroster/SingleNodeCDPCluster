@@ -29,6 +29,7 @@ echo "127.0.0.1  localhost  localhost.localdomain" > /etc/hosts
 echo "${IP} ${host}.ibm.com ${host}" >> /etc/hosts
 echo "updated hosts file:"
 cat /etc/hosts
+chmod 644 /etc/hosts
 echo "hostname is $(hostname -f)"
 echo "disabling SELinux for this boot.."
 setenforce 0
